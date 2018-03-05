@@ -1,5 +1,35 @@
 {
-  "name": "twitter-clone",
+  "name": "y",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.3",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack-cli": "^2.0.10"
+  },
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "version": "1.0.0",
+  "main": " ",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lalit527/twitter-clone.git"
+  },
+  "author": "Lalit527",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lalit527/twitter-clone/issues"
+  },
+  "homepage": "https://github.com/lalit527/twitter-clone#readme",
+  "devDependencies": {
+    "webpack": "^3.10.0"
+  }
 }
