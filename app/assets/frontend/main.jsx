@@ -1,5 +1,9 @@
 import TweetBox from './components/tweetbox';
 import TweetList from './components/tweetlist';
+import TweetStore from './stores/TweetStore';
+
+import TweetAction from './actions/tweetaction';
+TweetAction.getAllTweets();
 
 let mockTweets = [
 
