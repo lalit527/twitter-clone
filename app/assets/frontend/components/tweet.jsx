@@ -2,7 +2,7 @@ export default class Tweet extends React.Component {
   render() {
     return (
           <li className="collection-item avatar">
-            <i className="materialize-icons circle">person_pin</i>
+            <img src={this.props.gravatar} className="circle"></img>
             <span className="title">{this.props.name}</span>
             <time>{this.props.formattedDate}</time>
             <p>{this.props.body}</p>
