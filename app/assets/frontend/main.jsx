@@ -9,38 +9,31 @@ let mockTweets = [
 
 ];
 
+let getAppState = () => {
+  return { tweetsList: TweetStore.getAll() };
+}
+
 class Main extends React.Component   {
   constructor(props) {
     super(props);
-    this.state = { tweetsList: mockTweets };
-  }
-  formattedTweets(tweetsList){
-    let formattedDate = tweetsList.map(tweet => {
-      tweet.formattedDate = moment(tweet.created_at).fromNow();
-      return tweet;
-    });
-    return {
-      tweetsList: formattedDate
-    };
-  }
-  addTweet(tweetToAdd) {
-    $.post("tweets", { body: tweetToAdd })
-      .success( savedTweet => {
-        let newTweetList = this.state.tweetsList;
-        newTweetList.unshift(savedTweet);
-        this.setState(this.formattedTweets(newTweetList));
-      })
-      .error(error => console.log(error));
+    this.state = getAppState();
+    this._onChange = this._onChange.bind(this);
   }
   componentDidMount() {
-    $.ajax("/tweets")
-      .success(data => this.setState(this.formattedTweets(data)))
-      .error(error => console.log(error));
+    TweetStore.addChangeListener(this._onChange);
   }
+  componentWillUnmount() {
+    TweetStore.removeChangeListener(this._onChange);
+  }
+
+  _onChange() {
+    this.setState(getAppState());
+  }
+
   render() {
     return (
       <div className="container">
-        <TweetBox sendTweet={this.addTweet.bind(this)}/>
+        <TweetBox />
         <TweetList tweets={this.state.tweetsList}/>
       </div>
 
