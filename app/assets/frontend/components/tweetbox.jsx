@@ -1,10 +1,21 @@
 export default class TweetBox extends React.Component {
+  sendTweet(event) {
+    event.preventDefault();
+    let form = event.target;
+    //this.props.sendTweet(this.refs.tweetTextArea.value);
+    let tweet = form.elements['tweet'].value;
+    this.props.sendTweet(tweet);
+    console.log(tweet);
+    //console.log(this.refs.tweetTextArea.value);
+    form.elements['tweet'].value = '';
+
+  }
   render() {
     return (
       <div className="row">
-        <form onSumit={this.sendTweet}>
+        <form onSubmit={this.sendTweet.bind(this)}>
           <div className="input-field">
-            <textarea ref="tweetTextArea" className="materialize-textarea"/>
+            <textarea   name ='tweet' className="materialize-textarea"/>
               <label>What's Happening</label>
               <button type="submit" className="btn right">Tweet</button>
           </div>
@@ -13,3 +24,5 @@ export default class TweetBox extends React.Component {
     )
   }
 }
+
+//ref={(textarea) => { this.tweetTextArea = textarea; }}
