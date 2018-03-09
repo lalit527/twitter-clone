@@ -1,16 +1,12 @@
 const path = require('path');
-(function(){
-  console.log(path.resolve(__dirname));
-})();
-
 const config = {
   entry: './app/assets/frontend/main.jsx',
   output: {
-    path: __dirname + '/app/assets/javascripts/components/',
+    path: path.resolve(__dirname) + '/app/assets/javascripts/components/',
     filename: 'bundle.js'
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['*', '.js', '.jsx']
   },
   module: {
     rules: [
@@ -19,7 +15,10 @@ const config = {
         loader: 'babel-loader',
         exclude: [/node_modules/, /\.ejs$/, /\.erb$/],
         query: {
-            presets: ['react', 'es2015']
+            presets: [
+              ['es2015', { loose: true, modules: false }],
+              'react'
+            ]
         }
       }
 
